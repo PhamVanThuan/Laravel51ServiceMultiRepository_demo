@@ -16,8 +16,7 @@ use MyBlog\Order;
 class OrderRepository extends EloquentRepository
 {
     /** @var Order */
-    private $order;
-
+    protected $order;
 
     /**
      * OrderRepository constructor.
@@ -26,5 +25,21 @@ class OrderRepository extends EloquentRepository
     public function __construct(Order $order)
     {
         $this->order = $order;
+    }
+
+    /**
+     * 將訂單狀態改成已付費Y
+     *
+     * @param integer $id
+     * @return integer
+     */
+    function updateStatusToY($id)
+    {
+        $order = $this->find($id);
+        $order->status = 'Y';
+        $productId = $order->product_id;
+        $order->save();
+
+        return $productId;
     }
 }
