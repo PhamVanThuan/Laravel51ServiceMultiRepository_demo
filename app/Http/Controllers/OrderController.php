@@ -8,7 +8,7 @@ use MyBlog\Services\OrderService;
 class OrderController extends Controller
 {
     /** @var OrderService */
-    private $orderService;
+    protected $orderService;
 
     /**
      * OrderController constructor.
@@ -18,7 +18,6 @@ class OrderController extends Controller
     {
         $this->orderService = $orderService;
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -30,6 +29,4 @@ class OrderController extends Controller
     {
         $this->orderService->checkout($id);
     }
-
-
 }

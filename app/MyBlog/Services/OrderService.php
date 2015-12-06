@@ -1,15 +1,6 @@
 <?php
-/**
- * Your file description
- *
- * @version 0.1.0
- * @author oomusou
- * @date 12/6/15
- * @since 12/6/15 description
- */
 
 namespace MyBlog\Services;
-
 
 use Illuminate\Support\Facades\DB;
 use MyBlog\Repositories\OrderRepository;
@@ -18,21 +9,21 @@ use MyBlog\Repositories\ProductRepository;
 class OrderService
 {
     /** @var OrderRepository */
-    private $orderRepository;
+    protected $orderRepository;
     /** @var ProductRepository */
-    private $productRepository;
+    protected $productRepository;
 
     /**
      * OrderService constructor.
      * @param OrderRepository $orderRepository
      * @param ProductRepository $productRepository
      */
-    public function __construct(OrderRepository $orderRepository, ProductRepository $productRepository)
+    public function __construct(OrderRepository $orderRepository,
+        ProductRepository $productRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->productRepository = $productRepository;
     }
-
 
     /**
      * 結帳後負責更新資料庫
@@ -46,5 +37,4 @@ class OrderService
             $this->productRepository->stockMinusOne($productId);
         });
     }
-
 }

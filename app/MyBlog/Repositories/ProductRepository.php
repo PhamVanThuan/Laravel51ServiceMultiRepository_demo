@@ -9,7 +9,6 @@ class ProductRepository extends EloquentRepository
     /** @var Product */
     protected $product;
 
-
     /**
      * ProductRepository constructor.
      * @param Product $product

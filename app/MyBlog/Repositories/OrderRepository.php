@@ -29,6 +29,7 @@ class OrderRepository extends EloquentRepository
 
     /**
      * 將訂單狀態改成已付費Y
+     * 並傳回product_id
      *
      * @param integer $id
      * @return integer
